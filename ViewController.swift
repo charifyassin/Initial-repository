@@ -11,7 +11,8 @@ class ViewController: UIViewController {
 
     var timer: Timer!
     @IBOutlet weak var timerLabel: UILabel!
-
+    @IBOutlet weak var eventLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +44,20 @@ class ViewController: UIViewController {
 
         // Display the countdown
         timerLabel.text = "\(timeLeft.day!)j \(timeLeft.hour!)h \(timeLeft.minute!)m \(timeLeft.second!)s"
+        
+        // Update the text when event is passed
+               endEvent(currentdate: currentDate, eventdate: eventDate)
+        
         }
+    
+    func endEvent(currentdate: Date, eventdate: Date) {
+           if currentdate >= eventdate {
+               timerLabel.text = "Happy New Year!"
+               eventLabel.text = ""
+               // Stop Timer
+               timer.invalidate()
+           }
+       }
 
 }
 

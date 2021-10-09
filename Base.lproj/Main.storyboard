@@ -44,6 +44,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="eventLabel" destination="fN8-nm-Jdk" id="5dF-yt-h2X"/>
                         <outlet property="timerLabel" destination="zoa-fF-bI9" id="lgD-UE-UTM"/>
                     </connections>
                 </viewController>
