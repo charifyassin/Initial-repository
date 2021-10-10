@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     var timer: Timer!
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
+        
     }
     
     @objc func UpdateTime() {
@@ -27,17 +29,10 @@ class ViewController: UIViewController {
             let currentDate = userCalendar.date(from: components)!
 
             //Event Date
-               var eventDateComponents = DateComponents()
-               eventDateComponents.year = 2022
-               eventDateComponents.month = 01
-               eventDateComponents.day = 1
-               eventDateComponents.hour = 00
-               eventDateComponents.minute = 00
-               eventDateComponents.second = 00
-               eventDateComponents.timeZone = TimeZone(abbreviation: "GMT")
+        let eventDateComponents = EventDateComponents(year: 2022, month: 1, day: 1, hour: 0, minute: 0, second: 0)
 
         // Convert eventDateComponents to the user's calendar
-                let eventDate = userCalendar.date(from: eventDateComponents)!
+        let eventDate = userCalendar.date(from: eventDateComponents.returnEventDateComponents())!
 
         // Converts the seconds to days, hours, minutes and seconds
         let timeLeft = userCalendar.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: eventDate)
@@ -52,7 +47,7 @@ class ViewController: UIViewController {
     
     func endEvent(currentdate: Date, eventdate: Date) {
            if currentdate >= eventdate {
-               timerLabel.text = "Happy New Year!"
+               timerLabel.text = "Happy New Year !"
                eventLabel.text = ""
                // Stop Timer
                timer.invalidate()
