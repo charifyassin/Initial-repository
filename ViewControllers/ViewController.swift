@@ -15,10 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var eventLabel: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
+        let gradientView = GradientView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.insertSubview(gradientView, at: 0)
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTime), userInfo: nil, repeats: true)
-        
     }
     
     @objc func UpdateTime() {
